@@ -3,8 +3,8 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-const ws_connect_mongodb = require("./ws_connect_mongodb");
-const ws_crud_mongo = require("./ws_crud_mongo");
+const ws_connect_mongodb = require("./DB/ws_connect_mongodb");
+const ws_crud_mongo = require("./DB/ws_crud_mongo");
 
 var app = express();
 
