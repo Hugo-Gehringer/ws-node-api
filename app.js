@@ -5,7 +5,6 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const ws_connect_mongodb = require("./ws_connect_mongodb");
 const ws_crud_mongo = require("./ws_crud_mongo");
-const testApi = require("./testApi");
 
 var app = express();
 
