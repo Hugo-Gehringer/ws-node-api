@@ -1,5 +1,5 @@
 # Utilisation de l'image Node.js Alpine à partir des registres d'images.
-FROM node:14-alpine
+FROM node:16-alpine
 
 # Définition du répertoire dans le conteneur à /app pour stocker les fichiers et lancer notre application.
 WORKDIR /app
