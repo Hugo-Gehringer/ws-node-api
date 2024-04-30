@@ -19,10 +19,33 @@ ws_connect_mongodb.connect().then(client => {
     const db = client.db("defaultdb");
     const collection = db.collection('ws_masks');
 
+    app.get('/findAll', async (req, res) => {
+        try {
+            await ws_crud_mongo.findInCollection(collection).then(documents => {
+                res.json(documents);
+            })
+        } catch (error) {
+            console.error('Error finding all documents', error);
+            res.status(500).send('Error finding all documents');
+        }
+    });
+
     app.get('/find/:id', async (req, res) => {
         const id = req.params.id;
         try {
             await ws_crud_mongo.findInCollectionByQuery(collection, {id: id}).then(document => {
+                res.json(document);
+            })
+        } catch (error) {
+            console.error('Error finding document by id', error);
+            res.status(500).send('Error finding document by id');
+        }
+    });
+
+    app.get('/find/uuid/:id', async (req, res) => {
+        const id = req.params.id;
+        try {
+            await ws_crud_mongo.findDocumentById(collection, id).then(document => {
                 res.json(document);
             })
         } catch (error) {

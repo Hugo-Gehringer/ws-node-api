@@ -35,6 +35,4 @@ function testApi(){
     });
     console.log("End test script")
 }
-module.exports = {
-    testApi
-};
+testApi()

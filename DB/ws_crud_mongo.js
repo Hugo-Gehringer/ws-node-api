@@ -1,4 +1,5 @@
 const ws_connect_mongodb = require('./ws_connect_mongodb');
+const {ObjectId} = require("mongodb");
 
 // async function main() {
 //     try {
@@ -38,6 +39,10 @@ async function insertIntoCollection(collectionName, data){
     return  await collectionName.insertOne(data);
 }
 
+async function findInCollection(collectionName){
+    return await collectionName.find().toArray();
+}
+
 async function findInCollectionByQuery(collectionName, query){
     return await collectionName.findOne(query);
 }
@@ -51,9 +56,15 @@ async function deleteInCollection(collectionName, query){
     console.log(`Deleted ${deleteResult.deletedCount} document(s)`);
 }
 
+async function findDocumentById(collection, id) {
+    const document = await collection.findOne({ _id:new ObjectId(id) });
+    return document;
+}
 module.exports = {
     insertIntoCollection,
     findInCollectionByQuery,
+    findInCollection,
     updateInCollection,
+    findDocumentById,
     deleteInCollection
 };
